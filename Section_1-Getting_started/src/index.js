@@ -12,5 +12,11 @@ function Person (props) {  // needs to be a capital letter to work with react
     );
 }
 
-ReactDOM.render(<Person name = "Sky" age = "22" />, document.querySelector('#p1'));
-ReactDOM.render(<Person name = "Dids" age = "48" />, document.querySelector('#p2'));
+let app = (
+    <div>
+        <Person name = "Sky" age = "48"/>
+        <Person name = "Dids" age = "48"/>
+    </div>
+);
+
+ReactDOM.render(app, document.querySelector('#app'));

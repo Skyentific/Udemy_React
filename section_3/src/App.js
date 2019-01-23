@@ -24,6 +24,16 @@ class App extends Component {
     });
   }
 
+  nameChangedHandler = (event) => {
+    this.setState( {
+      persons: [
+        {name: 'Sarah', age: 48},
+        {name: event.target.value, age: 48},
+        {name: 'Who cares', age: 12}
+      ]
+    });
+  }
+
   render() {
     return (
       // The below is actually JSX and not HTML.  It's just made to look like HTML
@@ -37,7 +47,8 @@ class App extends Component {
         <Person 
           name={this.state.persons[1].name} 
           age={this.state.persons[1].age}
-          click={this.switchNameHandler.bind(this, 'Amanda')}/>
+          click={this.switchNameHandler.bind(this, 'Amanda')}
+          changed = {this.nameChangedHandler}/>
         <Person 
           name={this.state.persons[2].name} 
           age={this.state.persons[2].age}>My hobbies: racing</Person>

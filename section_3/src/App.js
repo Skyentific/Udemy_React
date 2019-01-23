@@ -9,9 +9,9 @@ class App extends Component {
       <div className="App">
         <h1>Hi, i'm a React app</h1>
         <p>This is really working</p>
-        <Person />
-        <Person />
-        <Person />
+        <Person name = 'Sky' age = '48'/>
+        <Person name='Dids' age='48'/>
+        <Person name='Test' age='10'>My hobbies: racing</Person>
       </div>
       // everything needs to be inside one root element (e.g. this div)
     );

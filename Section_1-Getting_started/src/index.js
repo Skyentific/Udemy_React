@@ -19,4 +19,5 @@ let app = (
     </div>
 );
 
-ReactDOM.render(app, document.querySelector('#app'));
+// Typically only have on e of these in a single page app
+ReactDOM.render(app, document.querySelector('#app'));  

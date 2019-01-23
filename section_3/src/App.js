@@ -1,3 +1,4 @@
+// just see commit notes 
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person' // should always use an upper case charater for customer compontents

@@ -1,4 +1,3 @@
-// just see commit notes 
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person' // should always use an upper case charater for customer compontents
@@ -13,13 +12,13 @@ class App extends Component {
     ]
   }
 
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     // console.log('Was clicked');
     // don't do this    this.state.persons[0].name = 'Sarah';
     this.setState({
       persons: [
         {name: 'Sarah', age: 48},
-        {name: 'Mandy', age: 48},
+        {name: newName, age: 48},
         {name: 'Who cares', age: 12}
       ]
     });
@@ -31,10 +30,17 @@ class App extends Component {
       <div className="App">
         <h1>Hi, i'm a React app</h1>
         <p>This is really working</p>
-        <button onClick ={this.switchNameHandler}> Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/> {/* this refers to the class */}
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}>My hobbies: racing</Person>
+        <button onClick ={() => this.switchNameHandler('Mandy')}> Switch Name</button>
+        <Person 
+          name={this.state.persons[0].name} 
+          age={this.state.persons[0].age}/> {/* this refers to the class */}
+        <Person 
+          name={this.state.persons[1].name} 
+          age={this.state.persons[1].age}
+          click={this.switchNameHandler.bind(this, 'Amanda')}/>
+        <Person 
+          name={this.state.persons[2].name} 
+          age={this.state.persons[2].age}>My hobbies: racing</Person>
       </div>
       // everything needs to be inside one root element (e.g. this div)
     );

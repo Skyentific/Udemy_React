@@ -22,18 +22,26 @@ class App extends Component {
   }
 
   nameChangedHandler = (event, id) => {
+    
+    // get the index of the selected item in the list
     const personIndex = this.state.persons.findIndex( p => {
         return p.id === id;
       }
     );
 
+    // make a copy of the person data for the indexed person
     const person = {...this.state.persons[personIndex]};
     
+    // update the person data
     person.name = event.target.value;
 
+    // make a copy of the origin persons list
     const persons = [...this.state.persons];
+    
+    // update the copy
     persons[personIndex] = person;
 
+    // write the copy over the original list
     this.setState( 
       {persons: persons}
     );

@@ -9,7 +9,9 @@ class App extends Component {
       {name: 'Sky', age: 48},
       {name: 'Dids', age: 48},
       {name: 'Test', age: 12}
-    ]
+    ],
+    otherState: "Random",
+    showPersons: false
   }
 
   switchNameHandler = (newName) => {
@@ -30,8 +32,7 @@ class App extends Component {
         {name: 'Sarah', age: 48},
         {name: event.target.value, age: 48},
         {name: 'Who cares', age: 12}
-      ],
-      showPersons: false
+      ]
     });
   }
 
@@ -55,18 +56,15 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-            <Person 
-              name={this.state.persons[0].name} 
-              age={this.state.persons[0].age}/> {/* this refers to the class */}
-            <Person 
-              name={this.state.persons[1].name} 
-              age={this.state.persons[1].age}
-              click={this.switchNameHandler.bind(this, 'Amanda')}
-              changed = {this.nameChangedHandler}/>
-            <Person 
-              name={this.state.persons[2].name} 
-              age={this.state.persons[2].age}>My hobbies: racing</Person>
-          </div>
+          { this.state.persons.map(person => {
+            return (
+              <Person 
+                name={person.name} 
+                age={person.age}
+              /> 
+            )
+          }) }    
+        </div>
       );
     }
 

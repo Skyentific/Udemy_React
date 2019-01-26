@@ -1,10 +1,10 @@
 .UserOutput p {
     width: 60%;
     margin: 16px auto;
-    border: 1px solid #eeeeee;
+    border: 1px solid #f0c0e4;
     box-shadow: 0 2px 3px #ccc;
     padding: 16px;
     text-align: center;
     font-size: 1.4em;
-    background-color: #ffffE0;
+    background-color: #fce7fc;
 }

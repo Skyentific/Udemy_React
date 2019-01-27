@@ -23,7 +23,23 @@ class Persons extends Component {
         console.log('[Persons.js] Inside componentDidUnmount()');
       }
 
-      // Just see commit comments
+      componentWillReceiveProps(nextProps) {
+        console.log('[UPDATE Persons.js] Inside componentWellReceiveProps', nextProps);
+      }
+
+      shouldComponentUpdate(nextProps, nextState) {
+        console.log('[UPDATE Persons.js] Inside shouldComponentUpdate', nextProps, nextState);
+        // return false;  // will stop the update
+        return nextProps.persons !== this.props.persons;  // only render if there is an actual update
+      }
+
+      componentWillUpdate(nextProps, nextState) {
+        console.log('[UPDATE Persons.js] Inside componentWillUpdate', nextProps, nextState);
+      }
+
+      componentDidUpdate() {
+        console.log('[UPDATE Persons.js] Inside componentDidUpdate');
+      }
 
     render () {
         console.log('[Persons.js] Inside render()');

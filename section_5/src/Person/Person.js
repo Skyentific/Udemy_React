@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from './Person.css'
 
-console.log(classes);
 const person = (props) => {
 
     

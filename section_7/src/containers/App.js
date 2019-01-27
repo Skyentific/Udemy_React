@@ -55,7 +55,6 @@ class App extends Component {
 
   render() {
 
-
     let persons = null;
     if (this.state.showPersons) {
       persons = <Persons
@@ -63,13 +62,12 @@ class App extends Component {
           persons = {this.state.persons}
           changed = {this.nameChangedHandler}/>;
     }
-  
-    
 
     return (
       // The below is actually JSX and not HTML.  It's just made to look like HTML
       <div className={styles.App}>
         <Cockpit
+          appTitle={this.props.title}
           persons = {this.state.persons}
           showPersons = {this.state.showPersons}
           clicked = {this.togglePersonsHandler}

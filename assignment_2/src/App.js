@@ -23,7 +23,6 @@ class App extends Component {
   }
 
   deleteLetter = (letterIndex) => {
-    console.log(letterIndex);
     let word = [...this.state.word];
     word.splice(letterIndex, 1);
     word = word.join('');

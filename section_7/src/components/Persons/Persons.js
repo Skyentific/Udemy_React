@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Person from './Person/Person'
 
 // Note, in ES6 functions, you don't need a return statement if
 // there is no function logic.  Just surround everything in ()
-class Persons extends Component {
+class Persons extends PureComponent {
 
     constructor(props) {
         super(props);
@@ -27,11 +27,16 @@ class Persons extends Component {
         console.log('[UPDATE Persons.js] Inside componentWellReceiveProps', nextProps);
       }
 
-      shouldComponentUpdate(nextProps, nextState) {
-        console.log('[UPDATE Persons.js] Inside shouldComponentUpdate', nextProps, nextState);
-        // return false;  // will stop the update
-        return nextProps.persons !== this.props.persons;  // only render if there is an actual update
-      }
+    // Build into PureComponent
+    //   shouldComponentUpdate(nextProps, nextState) {
+    //     console.log('[UPDATE Persons.js] Inside shouldComponentUpdate', nextProps, nextState);
+    //     // return false;  // will stop the update
+        
+    //     return nextProps.persons !== this.props.persons ||
+    //            nextProps.change !== this.props.changes ||
+    //            nextProps.clicked !== this.props.clicked;  // only render if there is an actual update
+    //     // return true;
+    //   }
 
       componentWillUpdate(nextProps, nextState) {
         console.log('[UPDATE Persons.js] Inside componentWillUpdate', nextProps, nextState);

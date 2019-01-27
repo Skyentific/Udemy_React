@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium from 'radium';
+import Radium, { StyleRoot }from 'radium';
 import './App.css';
 import Person from './Person/Person' // should always use an upper case charater for customer compontents
 
@@ -104,17 +104,19 @@ class App extends Component {
 
     return (
       // The below is actually JSX and not HTML.  It's just made to look like HTML
-      <div className="App">
-        <h1>Hi, i'm a React app</h1>
-        <p className = {classes.join(' ')}>This is really working</p>
-        
-        <button 
-          style={style}
-          onClick ={this.togglePersonsHandler}> Toggle Persons
-        </button>
-        
-        {persons}      
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>Hi, i'm a React app</h1>
+          <p className = {classes.join(' ')}>This is really working</p>
+          
+          <button 
+            style={style}
+            onClick ={this.togglePersonsHandler}> Toggle Persons
+          </button>
+          
+          {persons}      
+        </div>
+      </StyleRoot>
       // everything needs to be inside one root element (e.g. this div)
     );
   }

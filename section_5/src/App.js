@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Radium from 'radium';
 import './App.css';
 import Person from './Person/Person' // should always use an upper case charater for customer compontents
 
@@ -59,7 +60,11 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      } // Radium pseudo style
     };
 
     let persons = null;
@@ -81,6 +86,10 @@ class App extends Component {
         </div>
       );
       style.backgroundColor ='red';
+      style[':hover']= {  // need square brackets as its a string.
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
     }
 
     // let classes = ['red', 'bold'].join(' '); // what we need
@@ -111,4 +120,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);

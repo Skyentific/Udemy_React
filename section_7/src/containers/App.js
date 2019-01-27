@@ -5,7 +5,20 @@ import Cockpit from '../components/Cockpit/Cockpit'
 
 class App extends Component {
 
-  // Just see commit notes
+  constructor(props) {
+    super(props);
+    // this.state = ''  // alternative to initalise state
+    console.log('[App.js] inside constructor()', props);  
+  }
+
+  componentWillMount() {
+    console.log('[App.js] inside componentWillMount()');
+  }
+
+  componentDidMount() {
+    console.log('[App.js] Inside componentDidMount()');
+  }
+  
   state = {
     persons: [
       {id: '1', name: 'Sky', age: 48},
@@ -55,7 +68,7 @@ class App extends Component {
   }
 
   render() {
-
+    console.log('[App.js] Inside render()');
     let persons = null;
     if (this.state.showPersons) {
       persons = <Persons

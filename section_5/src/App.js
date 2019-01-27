@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Radium, { StyleRoot }from 'radium';
 import './App.css';
 import Person from './Person/Person' // should always use an upper case charater for customer compontents
 
@@ -60,11 +59,7 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      } // Radium pseudo style
+      cursor: 'pointer'
     };
 
     let persons = null;
@@ -86,10 +81,7 @@ class App extends Component {
         </div>
       );
       style.backgroundColor ='red';
-      style[':hover']= {  // need square brackets as its a string.
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
+      
     }
 
     // let classes = ['red', 'bold'].join(' '); // what we need
@@ -104,7 +96,7 @@ class App extends Component {
 
     return (
       // The below is actually JSX and not HTML.  It's just made to look like HTML
-      <StyleRoot>
+      
         <div className="App">
           <h1>Hi, i'm a React app</h1>
           <p className = {classes.join(' ')}>This is really working</p>
@@ -116,10 +108,9 @@ class App extends Component {
           
           {persons}      
         </div>
-      </StyleRoot>
       // everything needs to be inside one root element (e.g. this div)
     );
   }
 }
 
-export default Radium(App);
+export default App;

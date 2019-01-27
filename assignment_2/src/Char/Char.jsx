@@ -6,6 +6,7 @@ const char = (props) => {
     const style = {
         display: 'inline-block',
         padding: '16px',
+        margin: '5px',
         textAlign: 'center',
         border: '1px solid black'
     }

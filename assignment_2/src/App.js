@@ -8,8 +8,8 @@ import './App.css';
 class App extends Component {
   
   state = {
-    wordLength: 0,
-    word:""
+    wordLength: 10,
+    word:"Enter text"
   }
 
   inputChangeHandler = (event) => {

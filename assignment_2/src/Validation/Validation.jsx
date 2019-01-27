@@ -2,9 +2,10 @@ import React from 'react';
 
 const validation = (props) => {
 
+    // Check how long the user input is long enough
     let check = "";
     if (props.value >= 5) {
-        check = "Text is too long"
+        check = "Text is long enough"
     } else {
         check = "Text is too short"
     }

@@ -5,6 +5,7 @@ import Cockpit from '../components/Cockpit/Cockpit'
 
 class App extends Component {
 
+  // Just see commit notes
   state = {
     persons: [
       {id: '1', name: 'Sky', age: 48},

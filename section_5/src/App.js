@@ -83,11 +83,21 @@ class App extends Component {
       style.backgroundColor ='red';
     }
 
+    // let classes = ['red', 'bold'].join(' '); // what we need
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red')
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold')
+    }
+
+
     return (
       // The below is actually JSX and not HTML.  It's just made to look like HTML
       <div className="App">
         <h1>Hi, i'm a React app</h1>
-        <p>This is really working</p>
+        <p className = {classes.join(' ')}>This is really working</p>
         
         <button 
           style={style}

@@ -22,6 +22,9 @@ class Persons extends Component {
       componentWillUnmount() {
         console.log('[Persons.js] Inside componentDidUnmount()');
       }
+
+      // Just see commit comments
+
     render () {
         console.log('[Persons.js] Inside render()');
 

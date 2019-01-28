@@ -16,9 +16,9 @@ class BurgerBuilder extends Component {
             salad: 0,
             bacon: 0,
             cheese:0,
-            meat: 0,
-            totalPrice: 4
-        }
+            meat: 0
+        },
+        totalPrice: 4
     }
 
     addIngredientHandler = (type) => {
@@ -98,13 +98,15 @@ class BurgerBuilder extends Component {
             disabledInfo[key] = disabledInfo[key] <= 0;
         }
         console.log(disabledInfo);
+        console.log(this.state.totalPrice);
         return (
             <>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls
                     ingredientAdded = {this.addIngredientHandler}
                     ingredientRemoved ={ this.removeIngredientHandler}
-                    disabled={disabledInfo}/>
+                    disabled={disabledInfo}
+                    price = {this.state.totalPrice}/>
             </>
         )
     }

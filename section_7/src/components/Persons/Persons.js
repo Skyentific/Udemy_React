@@ -9,6 +9,7 @@ class Persons extends PureComponent {
         super(props);
         // this.state = ''  // alternative to initalise state
         console.log('[Persons.js] inside constructor()', props);  
+        this.lastPersonRef = React.createRef();
       }
     
       componentWillMount() {
@@ -17,6 +18,7 @@ class Persons extends PureComponent {
     
       componentDidMount() {
         console.log('[Persons.js] Inside componentDidMount()');
+        this.lastPersonRef.current.focusInput();
       }
 
       componentWillUnmount() {
@@ -46,6 +48,8 @@ class Persons extends PureComponent {
         console.log('[UPDATE Persons.js] Inside componentDidUpdate');
       }
 
+    
+
     render () {
         console.log('[Persons.js] Inside render()');
 
@@ -56,6 +60,7 @@ class Persons extends PureComponent {
                 name={person.name} 
                 position = {index}
                 age={person.age}
+                ref={this.lastPersonRef}
                 key={person.id}
                 changed={(event) => this.props.changed(event, person.id)}
             />

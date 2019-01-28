@@ -8,7 +8,17 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    // this.state = ''  // alternative to initalise state
+    
+    this.state = {
+      persons: [
+        {id: '1', name: 'Sky', age: 48},
+        {id: '2', name: 'Dids', age: 48},
+        {id: '3', name: 'Test', age: 12}
+      ],
+      otherState: "Random",
+      showPersons: false,
+      toggleClicked:0
+    }
     console.log('[App.js] inside constructor()', props);  
   }
 
@@ -33,16 +43,6 @@ class App extends Component {
 
   componentDidUpdate() {
     console.log('[UPDATE App.js] Inside componentDidUpdate');
-  }
-
-  state = {
-    persons: [
-      {id: '1', name: 'Sky', age: 48},
-      {id: '2', name: 'Dids', age: 48},
-      {id: '3', name: 'Test', age: 12}
-    ],
-    otherState: "Random",
-    showPersons: false
   }
 
   deletePersonHandler = (personIndex) => {
@@ -80,7 +80,12 @@ class App extends Component {
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
-    this.setState({showPersons: !doesShow});
+    this.setState( (prevState, props) => {
+      return{
+        showPersons: !doesShow,
+        toggleClicked: prevState.toggleClicked + 1
+      }
+    });
   }
 
   render() {

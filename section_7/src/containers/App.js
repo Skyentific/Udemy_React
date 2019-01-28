@@ -17,7 +17,8 @@ class App extends Component {
       ],
       otherState: "Random",
       showPersons: false,
-      toggleClicked:0
+      toggleClicked:0,
+      authenticated: false
     }
     console.log('[App.js] inside constructor()', props);  
   }
@@ -88,6 +89,10 @@ class App extends Component {
     });
   }
 
+  loginHandler = () => {
+    this.setState({authenticated: true})
+  }
+
   render() {
     console.log('[App.js] Inside render()');
     let persons = null;
@@ -95,8 +100,11 @@ class App extends Component {
       persons = <Persons
           clicked = {this.deletePersonHandler}
           persons = {this.state.persons}
-          changed = {this.nameChangedHandler}/>;
+          changed = {this.nameChangedHandler}
+          isAuthenticated = {this.state.authenticated}/>;
     }
+
+  
 
     return (
       // The below is actually JSX and not HTML.  It's just made to look like HTML
@@ -107,6 +115,7 @@ class App extends Component {
           persons = {this.state.persons}
           showPersons = {this.state.showPersons}
           clicked = {this.togglePersonsHandler}
+          login={this.loginHandler}
         />
         {persons}
       </>

@@ -4,6 +4,8 @@ import Persons from '../components/Persons/Persons' // should always use an uppe
 import Cockpit from '../components/Cockpit/Cockpit'
 import withClass from '../hoc/withClass';
 
+export const AuthContext = React.createContext(false);
+
 class App extends Component {
 
   constructor(props) {
@@ -35,7 +37,8 @@ class App extends Component {
     console.log('[UPDATE App.js] Inside shouldComponentUpdate', nextProps, nextState);
     // return false;  // will stop the update
     return nextState.persons !== this.state.persons ||
-           nextState.showPersons !== this.state.showPersons;  
+           nextState.showPersons !== this.state.showPersons ||
+           nextState.authenticated !== this.state.authenticated;  
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -90,7 +93,7 @@ class App extends Component {
   }
 
   loginHandler = () => {
-    this.setState({authenticated: true})
+    this.setState({authenticated: true});
   }
 
   render() {
@@ -100,8 +103,7 @@ class App extends Component {
       persons = <Persons
           clicked = {this.deletePersonHandler}
           persons = {this.state.persons}
-          changed = {this.nameChangedHandler}
-          isAuthenticated = {this.state.authenticated}/>;
+          changed = {this.nameChangedHandler}/>;
     }
 
   
@@ -116,8 +118,13 @@ class App extends Component {
           showPersons = {this.state.showPersons}
           clicked = {this.togglePersonsHandler}
           login={this.loginHandler}
+          
         />
-        {persons}
+        
+        <AuthContext.Provider value = {this.state.authenticated}>
+          {persons}
+        </AuthContext.Provider>
+        
       </>
       // everything needs to be inside one root element (e.g. this div)
     );

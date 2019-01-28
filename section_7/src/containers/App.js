@@ -33,6 +33,15 @@ class App extends Component {
     console.log('[App.js] Inside componentDidMount()');
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log('[App.js] Inside getDerivedStateFromProps()', nextProps, prevState);
+    return prevState;
+  }
+
+  getSnapshotBeforeUpdate() {
+    console.log('[App.js] Inside getDerivedStateFromProps()');
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
     console.log('[UPDATE App.js] Inside shouldComponentUpdate', nextProps, nextState);
     // return false;  // will stop the update

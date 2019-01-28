@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './Cockpit.module.css';
-import classes from './Cockpit.module.css';
+import Aux from '../../hoc/Aux'
 
 const cockpit = (props) => {
 
     const assignedClasses = [];
-    let btnClass = '';
+    let btnClass = styles.Button;
 
     if (props.showPersons) {
-        btnClass = styles.Red;
+        btnClass = [styles.Button, styles.Red].join(' ');
     }
 
     if(props.persons.length <=2) {
@@ -19,15 +19,16 @@ const cockpit = (props) => {
     }
 
     return (
-        <div className={classes.Cockpit}>
-            <h1>{props.appTitle}</h1>
+        
+        <Aux>
+        <h1>{props.appTitle}</h1>
             <p className = {assignedClasses.join(' ')}>This is really working</p>
             
             <button 
                 className={btnClass}
                 onClick={props.clicked}
             >Show Persons </button>
-        </div>
+        </Aux>
     )
 }
 

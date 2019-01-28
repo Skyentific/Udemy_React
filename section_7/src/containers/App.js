@@ -19,7 +19,6 @@ class App extends Component {
     console.log('[App.js] Inside componentDidMount()');
   }
 
-  // Built into PureComponent
   shouldComponentUpdate(nextProps, nextState) {
     console.log('[UPDATE App.js] Inside shouldComponentUpdate', nextProps, nextState);
     // return false;  // will stop the update

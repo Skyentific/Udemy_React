@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './App.module.css';
 import Persons from '../components/Persons/Persons' // should always use an upper case charater for customer compontents
 import Cockpit from '../components/Cockpit/Cockpit'
-import WithClass from '../hoc/WithClass'
+import withClass from '../hoc/withClass';
 
 class App extends Component {
 
@@ -95,7 +95,7 @@ class App extends Component {
 
     return (
       // The below is actually JSX and not HTML.  It's just made to look like HTML
-      <WithClass classes={styles.App}>
+      <>
         <button onClick={() => {this.setState({showPersons: true})}}>Show Persons</button>
         <Cockpit
           appTitle={this.props.title}
@@ -104,10 +104,10 @@ class App extends Component {
           clicked = {this.togglePersonsHandler}
         />
         {persons}
-      </WithClass>
+      </>
       // everything needs to be inside one root element (e.g. this div)
     );
   }
 }
 
-export default App;
+export default withClass(App, styles.App);

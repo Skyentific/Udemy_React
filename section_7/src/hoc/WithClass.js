@@ -1,9 +1,30 @@
-import React from 'react';
+import React, {Component} from 'react'
 
-const withClass = (props) => (
-    <div className={props.classes}>
-        {props.children}
-    </div>
-)
+// normal cuntion that returns a functional component
+// const withClass = (WrapedComponent, className) => {
+//     return( props ) => (
+//         <div className = {className}>
+            
+//             {/* pass on the props  */}
+//             <WrapedComponent {...props}/>  
 
-export default withClass
+//         </div>
+//     )
+// }
+
+const withClass = (WrapedComponent, className) => {
+    return class extends Component {
+        render() {
+            return (
+                <div className = {className}>
+                {/* pass on the props  */}
+                <WrapedComponent {...this.props}/>  
+                
+                </div>
+            )
+        }
+    }
+}
+
+
+export default withClass;

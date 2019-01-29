@@ -131,7 +131,6 @@ class BurgerBuilder extends Component {
         }
         // console.log(disabledInfo);
         // console.log(this.state.totalPrice);
-        console.log(this.state.purchasable);
         return (
             <>
                 

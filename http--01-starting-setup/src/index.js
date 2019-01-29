@@ -5,6 +5,12 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+// assume url is always the same
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+
+
 let myRequest = axios.interceptors.request.use(request => {
     console.log(request);
     return request;  // have to return otherwise it blocks all requests

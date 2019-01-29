@@ -48,3 +48,6 @@
 
   * Manage the state in Burger Builder becasue the state is most relevant at that level so make it a stateful component
 
+### Firebase
+* react-my-burger-eac51
+* https://react-my-burger-eac51.firebaseio.com/

@@ -26,6 +26,8 @@ class Blog extends Component {
             });
     }
 
+  
+
     postsSelectedHandler = (id) => {
         this.setState({SelectedPostId: id});
         console.log(id);
@@ -50,7 +52,9 @@ class Blog extends Component {
                     {posts}
                 </section>
                 <section>
-                    <FullPost id = {this.state.SelectedPostId} />
+                    <FullPost 
+                        id = {this.state.SelectedPostId} 
+                        />
                 </section>
                 <section>
                     <NewPost />

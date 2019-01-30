@@ -30,7 +30,8 @@ class App extends Component {
                <Posts />
              </Suspense>): <User />}
       </React.Fragment>
-      // <BrowserRouter>
+
+      // <BrowserRouter basename="/my-app">
       //   <React.Fragment>
       //     <nav>
       //       <NavLink to="/user">User Page</NavLink> |&nbsp;

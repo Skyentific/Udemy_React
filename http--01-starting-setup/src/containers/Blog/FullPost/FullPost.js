@@ -33,12 +33,12 @@ class FullPost extends Component {
     deletePostHandler = () => {
         axios.delete('/posts/' + this.props.match.params.id)
             .then(response => {
-                console.log(response);
+                // console.log(response);
             });
     }
     render () {
         
-        console.log('[FullPost.js]', this.props.match.params.id);
+        // console.log('[FullPost.js]', this.props.match.params.id);
 
         let post = <p style ={{textAlign: 'center', padding: '80px 0'}}>Please select a Post!</p>;
         

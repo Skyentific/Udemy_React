@@ -14,6 +14,12 @@ class NewPost extends Component {
         console.log(this.props);
 
     }
+
+    componentWillMount() {
+        // if (notAuth) {
+        //     this.props.history.push('/')
+        // }
+    }
     postDataHander = () => {
         const post = {
             title: this.state.title,

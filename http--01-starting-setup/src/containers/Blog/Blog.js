@@ -17,7 +17,8 @@ class Blog extends Component {
                         </ul>
                     </nav>
                 </header>
-                <Route path="/" exact render ={() => <h1 style={{padding: "80px"}}>Home</h1>}/>
+                {/* <Route path="/" exact render ={() => <Posts/>}/> */}
+                <Route path="/" exact component={Posts} />
                 <Route path="/new-post" exact render ={() => <h1 style={{padding: "80px"}}>Home 2</h1>}/>
 
               {/* <Posts/> */}

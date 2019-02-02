@@ -129,36 +129,37 @@ class BurgerBuilder extends Component {
 
     purchaseContinuedHandler = () => {
         // alert('You continue');
-        this.setState({loading: true});
+        // this.setState({loading: true});
 
-        const order = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: 'Sarah York',
-                address: {
-                    street: 'Test street',
-                    zipCode: '34345',
-                    country: 'Australia',
-                },
-                email: 'test@email.com'
-            },
-            deliveryMethod: 'fastest'
-        };
+        // const order = {
+        //     ingredients: this.state.ingredients,
+        //     price: this.state.totalPrice,
+        //     customer: {
+        //         name: 'Sarah York',
+        //         address: {
+        //             street: 'Test street',
+        //             zipCode: '34345',
+        //             country: 'Australia',
+        //         },
+        //         email: 'test@email.com'
+        //     },
+        //     deliveryMethod: 'fastest'
+        // };
 
         // firebase needs .json
-        axios.post('/orders.json', order)
-            .then(response => {
-                this.setState({
-                    loading: false,
-                    purchasing: false});
-            })
-            .catch(error => {
-                console.log(error);
-                this.setState({
-                    loading: false,
-                    purchasing: false});
-            });
+        // axios.post('/orders.json', order)
+        //     .then(response => {
+        //         this.setState({
+        //             loading: false,
+        //             purchasing: false});
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //         this.setState({
+        //             loading: false,
+        //             purchasing: false});
+        //     });
+        this.props.history.push('/checkout');
     }
 
     render() {

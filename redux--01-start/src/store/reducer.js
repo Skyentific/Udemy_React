@@ -39,6 +39,23 @@ const reducer = (state=initialState, action) => {
                     value: state.counter
                 })
             }
+        case 'DELETE_RESULT':
+            // const id = 2;
+            // const newArray = [...state.results]
+            // newArray.splice(id, 1);
+
+            const updatedArray = state.results.filter((item) => {
+                if (item.id === action.resultElId) {
+                    return false;
+                } else {
+                    return true;
+                }
+            });
+
+            return {
+                ...state,
+                results: updatedArray
+            }
         default:
             break
     }

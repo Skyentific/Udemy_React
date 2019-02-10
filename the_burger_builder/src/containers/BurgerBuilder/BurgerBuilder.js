@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import Modal from '../../components/UI/Modal/Modal';
-import OrderSummary from '../../components/Burger/OderSummary/OrderSummary';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
@@ -21,9 +21,9 @@ class BurgerBuilder extends Component {
         ingredients: null,
         totalPrice: 4,
         purchasable: false,
-        purchasing:  false,
-        loading: false,
-        error: false
+        purchasing:  false, // local UI state
+        loading: false, // local UI state
+        error: false // local UI state
     }
 
     componentDidMount() {

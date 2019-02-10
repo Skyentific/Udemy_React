@@ -13,7 +13,6 @@ import axios from '../../axios-orders';
 class BurgerBuilder extends Component {
 
     state = {
-        purchasable: false,
         purchasing:  false, // local UI state
         loading: false, // local UI state
         error: false // local UI state
@@ -36,8 +35,9 @@ class BurgerBuilder extends Component {
         .reduce((sum, el) => {
             return sum + el;
         }, 0);
-        console.log(sum);
-        this.setState({purchasable: sum > 0});
+        // console.log(sum);
+        
+        return sum > 0;
     }
 
     purchaseHandler = () => {
@@ -88,7 +88,7 @@ class BurgerBuilder extends Component {
                         ingredientAdded = {this.props.onIngredientAdded}
                         ingredientRemoved ={ this.props.onIngredientRemoved}
                         disabled={disabledInfo}
-                        purchasable = {this.state.purchasable}
+                        purchasable = {this.updatePurchaseState(this.props.ings)}
                         price = {this.props.price}
                         ordered = {this.purchaseHandler}/>
                 </>
@@ -122,6 +122,9 @@ class BurgerBuilder extends Component {
         )
     }
 }
+
+
+//REDUX
 
 const mapStateToProps = state => {
     return {

@@ -5,10 +5,22 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducer from './store/reducer';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import rootReducer from './store/reducer';
 
-const store = createStore(reducer);
+// middleware example
+const logger = store => {
+    return next => {
+        return action => {
+            console.log('[MiddleWare] Dispatching', action);
+            const result = next(action);
+            console.log('[Middleware] next state', store.getState());
+            return result;
+        }
+    }
+};
+
+const store = createStore(rootReducer, applyMiddleware(logger));
 
 const app = (
     <Provider store={store}>

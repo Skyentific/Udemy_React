@@ -13,10 +13,11 @@ export const saveResult = ( res ) => {
 
 // asynchronous action, which will be handled by thunk
 export const storeResult = (res) => {
-    return dispatch => {
+    return (dispatch, getState) => {
 
         setTimeout(() => {
-
+            console.log(getState());
+            const oldCounter = getState().ctr.counter;
             dispatch(saveResult(res))
             
         }, 2000);

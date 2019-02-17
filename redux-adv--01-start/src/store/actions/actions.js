@@ -33,10 +33,23 @@ export const subtract = (value) => {
     }
 };
 
-export const storeResult = (res) => {
+// synchronous action to be dispatched 
+export const saveResult = ( res ) => {
     return {
         type: STORE_RESULT,
         result: res
+    }
+}
+
+// asynchronous action, which will be handled by thunk
+export const storeResult = (res) => {
+    return dispatch => {
+
+        setTimeout(() => {
+
+            dispatch(saveResult(res))
+            
+        }, 2000);
     }
 };
 

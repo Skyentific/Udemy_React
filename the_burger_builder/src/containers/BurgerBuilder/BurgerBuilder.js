@@ -18,6 +18,17 @@ class BurgerBuilder extends Component {
         error: false // local UI state
     }
 
+    componentDidMount () {
+        axios.get( 'https://react-my-burger-eac51.firebaseio.com/orders/-LYLbi2ClahJOuRvqw1i/ingredients.json')
+            .then( response => {
+                console.log(response);
+                this.setState ( { ingredients: response.data } );
+                })
+                .catch( error => {
+                    this.setState( {error: true} )
+                });
+    }
+    
     updatePurchaseState = (ingredients) => {
        
         const sum = Object.keys(ingredients).map(igKey => {

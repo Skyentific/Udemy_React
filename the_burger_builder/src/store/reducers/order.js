@@ -8,7 +8,7 @@ const initalState = {
 
 const reducer = (state = initalState, action) => {
 
-    console.log('[reducers/orders.js]', action);
+    console.log('[reducers/order.js]', action);
     switch (action.type) {
 
         case actionTypes.PURCHASE_BURGER_START:
@@ -46,6 +46,25 @@ const reducer = (state = initalState, action) => {
                 purchased: false
             };
 
+        case actionTypes.FETCH_ORDERS_START:
+            return {
+                ...state,
+                loading: true
+            };
+
+        case actionTypes.FETCH_ORDERS_SUCCESS:
+            return {
+                ...state,
+                orders: action.orders,
+                loading: false
+            };
+
+        case actionTypes.FETCH_ORDERS_FAIL:
+            return {
+                ...state,
+                loading: false
+            };
+            
         default:
             console.log('Test');
             return state;

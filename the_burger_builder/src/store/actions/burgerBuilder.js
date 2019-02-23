@@ -32,7 +32,7 @@ export const setIngredients = (ingredients) => {
 // asych action creator
 export const initIngredients = () => {
     return dispatch => {
-        axios.get( 'https://react-my-burger-eac51.firebaseio.com/orders/-LYLbi2ClahJOuRvqw1i/ingredients.json')
+        axios.get( 'https://react-my-burger-eac51.firebaseio.com/ingredients.json')
             .then( response => {
                 console.log(response);
                     dispatch(setIngredients(response.data));

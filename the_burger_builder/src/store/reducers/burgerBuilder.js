@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes'
+import { updateObject } from '../utility';
 
 // BurgerBuilder.js
 const initialState = {
@@ -18,28 +19,26 @@ const reducer = (state = initialState, action) => {
 
     switch(action.type) {
         case actionTypes.ADD_INGREDIENT:
-            return {
-                ...state,
-                ingredients: {
-                    ...state.ingredients,
-                    [action.ingredientName]: state.ingredients[action.ingredientName] + 1  // new ingredient name from action payload
-                },
+            const updatedIngredientAdd  = { [action.ingredientName]: state.ingredients[action.ingredientName] + 1 }
+            const updatedIngredientsAdd = updateObject(state.ingredients, updatedIngredientAdd);
+            const updatedStateAdd = {
+                ingredients: updatedIngredientsAdd,
                 totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
-            };
+            }
+            return updateObject(state, updatedStateAdd);
+                  
 
         case actionTypes.REMOVE_INGREDIENT:
-            return {
-                ...state,
-                ingredients: {
-                    ...state.ingredients,
-                    [action.ingredientName]: state.ingredients[action.ingredientName] - 1  // new ingredient name from action payload
-                },
-                totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName]
-            };
+            const updatedIngredientRem  = { [action.ingredientName]: state.ingredients[action.ingredientName] - 1 }
+            const updatedIngredientsRem = updateObject(state.ingredients, updatedIngredientRem);
+            const updatedStateRem = {
+                ingredients: updatedIngredientsRem,
+                totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+            }
+            return updateObject(state, updatedStateRem);
 
         case actionTypes.SET_INGREDIENTS:
-            return {
-                ...state,
+            return updateObject(state, {
                 ingredients: {
                     salad: action.ingredients.salad,
                     bacon: action.ingredients.bacon,
@@ -48,13 +47,15 @@ const reducer = (state = initialState, action) => {
                 },
                 totalPrice: 4,
                 error: false
-            };
+                }
+            );
         
         case actionTypes.FETCH_INGREDIENTS_FAILED:
-            return {
-                ...state,
+            return updateObject(state, {
                 error: true
-            }
+                } 
+            );
+            
         
         default:
             return state;

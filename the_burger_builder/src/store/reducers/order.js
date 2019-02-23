@@ -7,49 +7,65 @@ const initalState = {
     purchased: false
 };
 
+const purchaseStart = ( state, action ) => {
+    return updateObject( state, { loading: true } );
+};
+
+const purchaseSuccess = (state, action ) => {
+    const newOrder = updateObject(action.orderData, { id: action.orderId });
+
+        console.log('reducers/order.js:PURchaSE_BURGER_SUCCESS]', newOrder);
+        return updateObject( state, {
+                loading: false,
+                purchased: true,
+                orders: state.orders.concat(newOrder)
+        }
+    );
+};
+
+const purchaseFail = (state, action) => {
+    return updateObject( state, { loading: false } );
+};
+
+const purchaseInit = (state, action) => {
+    return updateObject(state, { purchased: false } )
+};
+
+const fetchOrdersStart = (state, action) => {
+    return updateObject(state, {loading: true} );
+};
+
+const fetchOrdersSuccess = (state, action) => {
+    return updateObject(state, {
+        orders: action.orders,
+        loading: false
+        }
+    )
+};
+
+const fetchOrdersFail = (state, action) => {
+    return updateObject( state, { loading: false } );
+};
+
 const reducer = (state = initalState, action) => {
 
     console.log('[reducers/order.js]', action);
     switch (action.type) {
 
-        case actionTypes.PURCHASE_BURGER_START:
-
-            console.log('Purhase burger start');
-            return updateObject( state, { loading: true } );
+        case actionTypes.PURCHASE_BURGER_START: return purchaseStart(state, action);
         
-        case actionTypes.PURCHASE_BURGER_SUCCESS:
-
-            console.log('[reducers/order.js:PURCHASE_BURGER_SUCCESS]', action.orderData);
-
-            const newOrder = updateObject(action.orderData, { id: action.orderId });
-
-            console.log('reducers/order.js:PURchaSE_BURGER_SUCCESS]', newOrder);
-            return updateObject( state, {
-                    loading: false,
-                    purchased: true,
-                    orders: state.orders.concat(newOrder)
-                }
-            );
+        case actionTypes.PURCHASE_BURGER_SUCCESS: return purchaseSuccess(state, action);            
         
-        case actionTypes.PURCHASE_BURGER_FAIL:
-            return updateObject( state, { loading: false } );
+        case actionTypes.PURCHASE_BURGER_FAIL: return purchaseFail(state, action);
         
-        case actionTypes.PURCHASE_INIT:
-            return updateObject(state, { purchased: false } );
+        case actionTypes.PURCHASE_INIT:  return purchaseInit(state, action);
 
-        case actionTypes.FETCH_ORDERS_START:
-            return updateObject(state, {loading: true} );
+        case actionTypes.FETCH_ORDERS_START: return fetchOrdersStart(state, action);
 
-        case actionTypes.FETCH_ORDERS_SUCCESS:
-            return updateObject(state, {
-                orders: action.orders,
-                loading: false
-                }
-            )
+        case actionTypes.FETCH_ORDERS_SUCCESS: return fetchOrdersSuccess(state, action);
 
-        case actionTypes.FETCH_ORDERS_FAIL:
-            return updateObject( state, { loading: false } );
-
+        case actionTypes.FETCH_ORDERS_FAIL: return fetchOrdersFail(state, action);
+            
         default:
             console.log('Test');
             return state;

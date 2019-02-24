@@ -20,7 +20,6 @@ class Checkout extends Component {
 
     let summary = <Redirect to ='/'/>
     
-
     if (this.props.ings){
         console.log('[Contact.js]', this.props);        
         const purchasedRedirect = this.props.purchased ? <Redirect to="/" /> : null;

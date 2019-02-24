@@ -23,6 +23,7 @@ export const authFail = (error) => {
 };
 
 export const logout = () => {
+    console.log('[actions/auth.js]', 'ENTRY');
     localStorage.removeItem('token');
     localStorage.removeItem('expirationTime');
     localStorage.removeItem('userId');

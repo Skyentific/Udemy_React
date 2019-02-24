@@ -7,6 +7,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import { connect } from 'react-redux';
 import * as burgerBuilderActions from '../../store/actions/index';
+import * as authActions from '../../store/actions/index';
 
 import axios from '../../axios-orders';
 
@@ -37,6 +38,8 @@ class BurgerBuilder extends Component {
         if (this.props.isAuthenticated) {
             this.setState({purchasing: true})
         } else {
+            this.props.onSetAuthRedirectPath('/checkout');
+
             this.props.history.push('/auth');
         }
         
@@ -86,9 +89,7 @@ class BurgerBuilder extends Component {
                 purchaseContinued = {this.purchaseContinuedHandler}/>
 
         }
-        
-        // console.log(disabledInfo);
-        // console.log(this.state.totalPrice);
+
         return (
             <>
                 <Modal 
@@ -121,7 +122,8 @@ const mapDispatchToProps = dispatch => {
         onIngredientAdded: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
         onIngredientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName)),
         onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients()),
-        onInitPurchase: () => dispatch(burgerBuilderActions.purchaseInit())
+        onInitPurchase: () => dispatch(burgerBuilderActions.purchaseInit()),
+        onSetAuthRedirectPath: (path) => dispatch(authActions.setAuthRedirectPath(path))
     }
 }
 

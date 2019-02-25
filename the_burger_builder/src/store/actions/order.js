@@ -2,7 +2,7 @@ import * as actionTypes from './actionTypes';
 import axios from '../../axios-orders';
 
 export const purchaseBurgerSuccess = (id, orderData) => {
-    console.log('[actions/orders.js: purchaseBurgerSuccess]', id, orderData);
+    // console.log('[actions/orders.js: purchaseBurgerSuccess]', id, orderData);
     return {
         type: actionTypes.PURCHASE_BURGER_SUCCESS,
         orderId: id,
@@ -25,14 +25,14 @@ export const purchaseBurgerStart = () => {
 
 // async
 export const purchaseBurger = (orderData, token) => {
-    console.log('[order.js:purchaseBurger]', orderData);
+    // console.log('[order.js:purchaseBurger]', orderData);
     return dispatch => {
 
         dispatch(purchaseBurgerStart());
 
         axios.post('/orders.json?auth=' + token, orderData)
             .then(response => {
-                console.log('[actions/orders.js: purchaseBurger]', response.data, orderData);
+                // console.log('[actions/orders.js: purchaseBurger]', response.data, orderData);
                 dispatch(purchaseBurgerSuccess(response.data.name, orderData));
             })
             .catch(error => {
@@ -74,10 +74,10 @@ export const fetchOrders = (token, userId) => {
     return dispatch => {
         dispatch(fetchOrdersStart());
         const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"'; 
-        console.log('[actions/order.js]',queryParams);
+        // console.log('[actions/order.js]',queryParams);
         axios.get('/orders.json' + queryParams)
         .then(res => {
-            console.log('[actions/order.js]', res);
+            // console.log('[actions/order.js]', res);
             const fetchedOrders =[];
 
             for (let key in res.data) {
@@ -88,7 +88,7 @@ export const fetchOrders = (token, userId) => {
             }
             dispatch(fetchOrdersSuccess(fetchedOrders));
 
-            console.log(fetchedOrders);
+            // console.log(fetchedOrders);
         })
         .catch(err => {
             dispatch(fetchOrdersFail(err));

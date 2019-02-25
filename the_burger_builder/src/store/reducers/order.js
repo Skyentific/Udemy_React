@@ -14,7 +14,7 @@ const purchaseStart = ( state, action ) => {
 const purchaseSuccess = (state, action ) => {
     const newOrder = updateObject(action.orderData, { id: action.orderId });
 
-        console.log('reducers/order.js:PURchaSE_BURGER_SUCCESS]', newOrder);
+        // console.log('reducers/order.js:PURchaSE_BURGER_SUCCESS]', newOrder);
         return updateObject( state, {
                 loading: false,
                 purchased: true,
@@ -49,7 +49,7 @@ const fetchOrdersFail = (state, action) => {
 
 const reducer = (state = initalState, action) => {
 
-    console.log('[reducers/order.js]', action);
+    // console.log('[reducers/order.js]', action);
     switch (action.type) {
 
         case actionTypes.PURCHASE_BURGER_START: return purchaseStart(state, action);
@@ -67,7 +67,7 @@ const reducer = (state = initalState, action) => {
         case actionTypes.FETCH_ORDERS_FAIL: return fetchOrdersFail(state, action);
             
         default:
-            console.log('Test');
+            // console.log('Test');
             return state;
     }
 };

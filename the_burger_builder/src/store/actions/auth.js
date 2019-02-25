@@ -23,7 +23,7 @@ export const authFail = (error) => {
 };
 
 export const logout = () => {
-    console.log('[actions/auth.js]', 'ENTRY');
+    // console.log('[actions/auth.js]', 'ENTRY');
     localStorage.removeItem('token');
     localStorage.removeItem('expirationTime');
     localStorage.removeItem('userId');
@@ -49,7 +49,7 @@ export const setAuthRedirectPath = (path) => {
 };
 
 export const auth = (email, password, isSignup) => {
-    console.log(isSignup);
+    // console.log(isSignup);
     return dispatch => {
         // authenticate user
         dispatch(authStart());
@@ -62,7 +62,7 @@ export const auth = (email, password, isSignup) => {
         const signup_URL = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=' + APIKEY;
         const signin_URL = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=' + APIKEY;
         let url = '';
-        console.log(signup_URL);
+        // console.log(signup_URL);
         if (isSignup) {
             url = signup_URL;
         } else {
@@ -71,7 +71,7 @@ export const auth = (email, password, isSignup) => {
 
         axios.post(url, authData )
             .then(response => {
-                console.log(response);
+                // console.log(response);
 
                 const expirationDate = new Date (new Date().getTime() + response.data.expiresIn * 1000);
                 localStorage.setItem('token', response.data.idToken);
@@ -82,7 +82,7 @@ export const auth = (email, password, isSignup) => {
                 dispatch(checkAuthTimeout(response.data.expiresIn))
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
                 dispatch(authFail(err.response.data.error));
             }
         );
@@ -90,11 +90,11 @@ export const auth = (email, password, isSignup) => {
 };
 
 export const authCheckState = () => {
-    console.log('[actions/auth.js]', 'ENTRY');
+    // console.log('[actions/auth.js]', 'ENTRY');
 
     return dispatch => {
         const token = localStorage.getItem('token');
-        console.log('[actions/auth.js]', token);
+        // console.log('[actions/auth.js]', token);
         if (!token) {
             dispatch(logout());
         } else {

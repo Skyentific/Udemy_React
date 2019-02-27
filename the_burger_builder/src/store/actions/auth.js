@@ -24,12 +24,12 @@ export const authFail = (error) => {
 
 export const logout = () => {
     // console.log('[actions/auth.js]', 'ENTRY');
-    localStorage.removeItem('token');
-    localStorage.removeItem('expirationTime');
-    localStorage.removeItem('userId');
+    // localStorage.removeItem('token');
+    // localStorage.removeItem('expirationTime');
+    // localStorage.removeItem('userId');
 
     return {
-        type: actionTypes.AUTH_LOGOUT
+        type: actionTypes.AUTH_INITIATE_LOGOUT
     };
 };
 

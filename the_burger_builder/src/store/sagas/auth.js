@@ -2,13 +2,13 @@ import { put } from 'redux-saga/effects';
 import * as actionTypes from '../actions/actionTypes';
 
 // function* is a generator
-function* logout(action) {
-    localStorage.removeItem('token');
-    localStorage.removeItem('expirationTime');
-    localStorage.removeItem('userId');
+export function* logoutSaga(action) {
+
+    yield localStorage.removeItem('token');
+    yield localStorage.removeItem('expirationTime');
+    yield localStorage.removeItem('userId');
     
-    put({
+    yield put({
             type: actionTypes.AUTH_LOGOUT
     })
-
 }

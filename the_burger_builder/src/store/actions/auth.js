@@ -23,21 +23,23 @@ export const authFail = (error) => {
 };
 
 export const logout = () => {
-    // console.log('[actions/auth.js]', 'ENTRY');
-    // localStorage.removeItem('token');
-    // localStorage.removeItem('expirationTime');
-    // localStorage.removeItem('userId');
-
     return {
         type: actionTypes.AUTH_INITIATE_LOGOUT
     };
 };
 
+export const logoutSucceed =( ) => {
+
+    return {
+        type: actionTypes.AUTH_LOGOUT
+    }
+};
+
 export const checkAuthTimeout = (expirationTime) => {
-    return dispatch => {
-        setTimeout(() => {
-            dispatch(logout());
-        }, expirationTime * 1000);
+    return {
+        type:actionTypes.AUTH_CHECK_TIMEOUT,
+        // expirationTime: 10,
+        expirationTime: expirationTime
     };
 };
 

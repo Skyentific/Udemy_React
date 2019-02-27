@@ -12,14 +12,29 @@ configure( {adapter: new Adapter()});
 // * test function
 describe('<NavigationItems />', () => {
 
+    let wrapper;
+
+    beforeEach(() => {
+        wrapper = shallow(<NavigationItems/>);
+    });
+
+    // test un-authenticated
     it(
         'should render two <NavigationItem /> elements if not authenticated', () => {
-        const wrapper = shallow(<NavigationItems/>);
-
         expect(wrapper.find(NavigationItem)).toHaveLength(2);
+        });
 
-        }
-    );
+    // test authenticated
+    it(
+        'should render three <NavigationItem /> elements if authenticated', () => {
+        wrapper.setProps({isAuthenticated: true});
+        expect(wrapper.find(NavigationItem)).toHaveLength(3);
+        });
 
-
+    // test logout link exists if authenticated
+    it(
+        'should contain a "logout" link if authenticated', () => {
+        wrapper.setProps({isAuthenticated: true});
+        expect(wrapper.contains(<NavigationItem link="/logout">Logout</NavigationItem>)).toEqual(true);
+        });
 });

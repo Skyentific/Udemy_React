@@ -1,9 +1,10 @@
 import React from 'react';
 
 const user = (props) => (
+    
+    
     <div>
-        <h1>{props.name}</h1>
-        <p>Age: {props.age}</p>
+
         <style jsx>{`
         div { 
             border: 1px solid #eee;
@@ -12,6 +13,10 @@ const user = (props) => (
             text-align: center
         }
         `}</style>
+
+        <h1>{props.name}</h1>
+        <p>Age: {props.age}</p>
+        
     </div>
 )
 
